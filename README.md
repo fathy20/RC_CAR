@@ -1,60 +1,76 @@
-# RC_CAR
-Autonomous Car Project
-Overview
-This project aims to design and implement an autonomous car that can navigate a course without any human intervention. Using embedded systems such as sensors and actuators, the car processes environmental inputs and makes real-time decisions to control its movement.
+# Autonomous Car Project
 
-The system supports multiple operation modes, including manual control and several autonomous navigation methods.
+---
 
-Author
-Eng. Fathy Ahmed
+## Project Overview
+This project aims to design and implement an **autonomous car** capable of navigating a predefined course **without human intervention**.
+By integrating embedded systems technologies such as sensors, actuators, and real-time control algorithms, the car can perceive its environment,
+make intelligent decisions, and respond accordingly.
 
-WhatsApp: +201002137288
+---
 
-Features
-Initialization of the car's embedded control system
+## Author
+**Eng. Fathy Ahmed**  
+📞 WhatsApp: +201002137288
 
-Bluetooth communication for mode and velocity selection
+---
 
-Four operational modes:
+## Features
+- **Multi-mode Operation**:
+  - **Manual Mode**: Direct control via Bluetooth commands.
+  - **Line Follower Mode**: Uses IR sensors to follow a line on the track.
+  - **Ultrasonic Mode**: Detects obstacles and navigates automatically using ultrasonic sensors.
+  - **Map Line Mode**: Advanced line navigation based on predefined path mapping.
 
-Manual Mode — Car direction controlled manually via Bluetooth commands
+- **Bluetooth Communication** for selecting:
+  - Velocity level (1 to 4)
+  - Operation mode (1 to 4)
 
-Line Follower Mode — Car follows a line track using IR sensors
+- **Real-time Decision Making** and control for smooth autonomous driving.
 
-Ultrasonic Mode — Car automatically navigates using ultrasonic obstacle detection
+---
 
-Map Line Mode — Advanced line tracking possibly using predefined maps or path algorithms
+## System Architecture
+- **Microcontroller**: ATMEGA32  
+- **Motor Driver**: L298N  
+- **Sensors**: HC-SR04 Ultrasonic sensor, IR line sensors  
+- **Communication Module**: Bluetooth  
+- **Programming Language**: Embedded C  
 
-How It Works
-The system initializes hardware and peripherals.
+---
 
-Bluetooth communication prompts the user to select velocity (1 to 4).
+## Usage Instructions
+1. **Initialization**: On startup, the system initializes all hardware components and drivers.  
+2. **Velocity Selection**: The user sets the velocity level via Bluetooth (input values `'1'` to `'4'`).  
+3. **Mode Selection**: The user selects the operation mode via Bluetooth (input values `'1'` to `'4'`).  
+4. **Execution**: The car continuously executes the selected mode algorithm:
+   - `'1'`: Manual control  
+   - `'2'`: Line follower  
+   - `'3'`: Ultrasonic automatic navigation  
+   - `'4'`: Map line navigation  
 
-Bluetooth communication prompts the user to select mode (1 to 4).
+---
 
-Based on the mode selected, the car runs the respective control algorithm continuously.
+## File Structure
+- **`main.c`** — Main program handling initialization, mode & velocity selection, and control loop.  
+- **`APP_DRIVER/MultipleTasksCar_Interface.h`** — Interface header for car control tasks (required).  
+- **`CAR.pdf`** — Hardware schematic and wiring diagram for the autonomous car system.
 
-Hardware and Software Components
-Microcontroller: ATMEGA32 (assumed from schematic)
+---
 
-Motor Driver: L298N
+## Notes
+- Bluetooth commands must be within the character range `'1'` to `'4'` to be valid.  
+- The design emphasizes modularity, allowing easy enhancement and integration of additional control modes.  
+- Proper power management and sensor calibration are essential for reliable operation.
 
-Sensors: Ultrasonic sensor (HC-SR04), IR line sensors
+---
 
-Communication: Bluetooth module for remote input
+## Contact & Support
+For any questions or support regarding this project, please contact:  
+**Eng. Fathy Ahmed** — WhatsApp: +201002137288  
 
-Software: Embedded C with modular functions for different driving modes
+---
 
-Files Provided
-main.c — Main control program
+Thank you for your interest in this Autonomous Car project!  
+Drive safe, innovate, and keep exploring embedded systems! 🚗🤖
 
-APP_DRIVER/MultipleTasksCar_Interface.h (not provided here) — Interface header with key functions for control
-
-CAR.pdf — Hardware schematic and wiring diagram
-
-Notes
-Velocity and mode inputs are characters '1' to '4' received over Bluetooth.
-
-The main loop executes the selected mode indefinitely.
-
-Modular design facilitates easy extension or modification of modes.
